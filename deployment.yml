@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloapp-deployment
+spec:
+  replicas: 2     # Number of app pods to run
+  selector:
+    matchLabels:
+      app: helloapp
+  template:
+    metadata:
+      labels:
+        app: helloapp  # Pods will get this label for selector matching
+    spec:
+      containers:
+        - name: helloapp
+          image: localhost:5000/flask-helloapp:latest
+          ports:
+            - containerPort: 8080
+
