@@ -1,0 +1,16 @@
+- name: Deploy Flask App to k3s
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Apply Deployment to k3s
+      community.kubernetes.k8s:
+        kubeconfig: /etc/rancher/k3s/k3s.yaml
+        state: present
+        definition: "{{ lookup('file', 'files/deployment.yaml') }}"
+
+    - name: Apply Service to k3s
+      community.kubernetes.k8s:
+        kubeconfig: /etc/rancher/k3s/k3s.yaml
+        state: present
+        definition: "{{ lookup('file', 'files/service.yaml') }}"
