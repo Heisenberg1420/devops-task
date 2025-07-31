@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: helloapp
-          image: heisenberg1420/devops:v1        
+          image: heisenberg1420/devops:a0e4533e9fa46e488df35d423665d06561ad0cc0      
           ports:
             - containerPort: 8080
       imagePullSecrets:
